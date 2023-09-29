@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/takatoshilee/Downloads/Cpp/Competitive-Programming/math/myenv"
+VIRTUAL_ENV="/Users/takatoshilee/Downloads/Cpp/Competitive-Programming/math/Math-IA-Pendulum-Graph/myenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

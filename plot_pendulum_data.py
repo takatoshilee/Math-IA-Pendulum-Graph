@@ -1,27 +1,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
 
-# Load data from the C++ program's output file
+# Read data from the file
 data = np.loadtxt("pendulum_data.txt")
 
 # Extract angles, lengths, and percentage errors
 angles = data[:, 0]
-lengths = data[:, 1]
 percent_errors = data[:, 2]
 
-# Choose a specific length for the 2D heatmap
-target_length = 2.0  # Adjust this to the desired length
+# Define a quadratic function for curve fitting
+def quadratic_function(x, a, b, c):
+    return a * x**2 + b * x + c
 
-# Filter data for the chosen length
-mask = (lengths == target_length)
-filtered_angles = angles[mask]
-filtered_percent_errors = percent_errors[mask]
+# Perform the curve fit
+popt, pcov = curve_fit(quadratic_function, angles, percent_errors)
 
-# Create a 2D heatmap plot for the chosen length
-plt.figure(figsize=(10, 6))
-plt.scatter(filtered_angles, filtered_percent_errors, c=filtered_percent_errors, cmap='viridis', s=50)
+# Generate data points for the fitted curve
+fit_curve = quadratic_function(angles, *popt)
+
+# Create a plot
+plt.scatter(angles, percent_errors, label='Data')
+plt.plot(angles, fit_curve, label='Fitted Curve', color='red')
 plt.xlabel('Initial Angle (Degrees)')
 plt.ylabel('Percent Error')
-plt.title(f'2D Heatmap of Percent Error vs. Initial Angle (Length={target_length}m)')
-plt.colorbar(label='Percent Error')
+plt.title('Fitted Quadratic Curve for Percent Error vs. Initial Angle')
+plt.legend()
+plt.grid(True)
 plt.show()
+
+# Display the fitted coefficients
+print("Fitted coefficients:", popt)
