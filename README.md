@@ -24,7 +24,7 @@ Run the compiled program:
 ### Python Script
 Ensure you have the required Python packages installed:
 ```bash
-pip install numpy matplotlib scipy
+pip3 install numpy matplotlib scipy
 ```
 
 Run the Python script to plot the data and fit a quadratic curve:
