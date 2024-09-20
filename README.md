@@ -39,6 +39,9 @@ The generated graph illustrates the relationship between the initial angle and t
 
 ## Fitted Equation
 The fitted equation for the quadratic curve is:
-$$ f(x) = 0.00246396 \cdot x^2 - 0.02765015 \cdot x + 0.22808328 $$
+$ f(x) = 0.00246396 \cdot x^2 - 0.02765015 \cdot x + 0.22808328 $
 
 This equation can be used to predict the percentage error for a given initial angle.
+
+## Measurement Accuracy
+For a good measurement system, the accuracy error should be within 5% and the precision error should be within 10%.
